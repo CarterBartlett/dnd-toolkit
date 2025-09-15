@@ -1,0 +1,129 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <link type="text/css" rel="stylesheet" href="styles.css">
+        <title>D&D Toolkit</title>
+    </head>
+    <body>
+        <header>
+            <h1>D&D Toolkit</h1>
+        </header>
+        <main>
+        <section>
+            <h2>Stat Roller</h2>
+            <div id="stat-roller">
+                <div class="stats">
+                    <div class="stat" id="stat-1">
+                        <p class="modifier">+0</p>
+                        <h1>0</h1>
+                        <p class="rolls">0,0,0,0</p>
+                        <select class="stat-select">
+                            <option value="">--</option>
+                            <option value="str">STR</option>
+                            <option value="dex">DEX</option>
+                            <option value="con">CON</option>
+                            <option value="int">INT</option>
+                            <option value="wis">WIS</option>
+                            <option value="cha">CHA</option>
+                        </select>
+                    </div>
+                    <div class="stat" id="stat-2">
+                        <p class="modifier">+0</p>
+                        <h1>0</h1>
+                        <p class="rolls">0,0,0,0</p>
+                        <select class="stat-select">
+                            <option value="">--</option>
+                            <option value="str">STR</option>
+                            <option value="dex">DEX</option>
+                            <option value="con">CON</option>
+                            <option value="int">INT</option>
+                            <option value="wis">WIS</option>
+                            <option value="cha">CHA</option>
+                        </select>
+                    </div>
+                    <div class="stat" id="stat-3">
+                        <p class="modifier">+0</p>
+                        <h1>0</h1>
+                        <p class="rolls">0,0,0,0</p>
+                        <select class="stat-select">
+                            <option value="">--</option>
+                            <option value="str">STR</option>
+                            <option value="dex">DEX</option>
+                            <option value="con">CON</option>
+                            <option value="int">INT</option>
+                            <option value="wis">WIS</option>
+                            <option value="cha">CHA</option>
+                        </select>
+                    </div>
+                    <div class="stat" id="stat-4">
+                        <p class="modifier">+0</p>
+                        <h1>0</h1>
+                        <p class="rolls">0,0,0,0</p>
+                        <select class="stat-select">
+                            <option value="">--</option>
+                            <option value="str">STR</option>
+                            <option value="dex">DEX</option>
+                            <option value="con">CON</option>
+                            <option value="int">INT</option>
+                            <option value="wis">WIS</option>
+                            <option value="cha">CHA</option>
+                        </select>
+                    </div>
+                    <div class="stat" id="stat-5">
+                        <p class="modifier">+0</p>
+                        <h1>0</h1>
+                        <p class="rolls">0,0,0,0</p>
+                        <select class="stat-select">
+                            <option value="">--</option>
+                            <option value="str">STR</option>
+                            <option value="dex">DEX</option>
+                            <option value="con">CON</option>
+                            <option value="int">INT</option>
+                            <option value="wis">WIS</option>
+                            <option value="cha">CHA</option>
+                        </select>
+                    </div>
+                    <div class="stat" id="stat-6">
+                        <p class="modifier">+0</p>
+                        <h1>0</h1>
+                        <p class="rolls">0,0,0,0</p>
+                        <select class="stat-select">
+                            <option value="">--</option>
+                            <option value="str">STR</option>
+                            <option value="dex">DEX</option>
+                            <option value="con">CON</option>
+                            <option value="int">INT</option>
+                            <option value="wis">WIS</option>
+                            <option value="cha">CHA</option>
+                        </select>
+                    </div>
+                </div>
+                <div class="stat-totals">
+                    <p>Stat total: <span id="stat-total"></span></p>
+                    <p>Lowest stat: <span id="stat-lowest"></span></p>
+                    <p>Highest stat: <span id="stat-highest"></span></p>
+                    <p>Average stat: <span id="stat-average"></span></p>
+                    <p>Luck factor: <span id="stat-luck-factor"></span></p>
+                </div>
+                <button id="remove-stat-allocations">Remove Stat Allocations</button>
+                <div>
+                    <label>Rolling Method:</label>
+                    <input type="radio" id="method-standard" name="rolling-method" value="standard" checked>
+                    <label for="method-standard">Standard (4d6 drop lowest)</label>
+                    <input type="radio" id="method-classic" name="rolling-method" value="classic">
+                    <label for="method-classic">Classic (3d6)</label>
+                </div>
+                <label for="minimum-stat-threshold">Minimum Stat Threshold:</label>
+                <input type="number" id="minimum-stat-threshold" value="75" /><br/>
+                <label for="guarantee-16">Guarantee at least one 16 or higher?</label>
+                <input type="checkbox" id="guarantee-16" />
+                <button id="roll-button">Roll Stats</button>
+                <div id="result"></div>
+            </div>
+        </section>
+        </main>
+    </body>
+    <script src="main.js"></script>
+</html>
