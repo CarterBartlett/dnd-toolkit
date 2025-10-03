@@ -140,6 +140,52 @@
             </div>
             <div id="counters-container" style="display:flex; flex-wrap:wrap;"></div>
         </section>
+        <section>
+            <h2>Character Condition</h2>
+            <p>Current HP / Max HP</p>
+            <input type="text" id="current-hp" value="0" style="font-size:30px;width:60px;"> <span style="font-size:30px">/</span>
+            <input type="text" id="max-hp" value="0" style="font-size:30px;width:60px;">
+            <p>% of HP: <span id="percent-hp">0</span>%</p>
+            <p>Condition: <span id="character-condition">Healthy</span></p>
+            <table style="width:100%;max-width:400px;">
+                <thead style="background-color:darkslateblue;color:white;">
+                    <tr>
+                        <th>Condition</th>
+                        <th>HP %</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>Healthy</td>
+                        <td>100%</td>
+                    </tr>
+                    <tr>
+                        <td>Minor Injuries</td>
+                        <td>&le; 75%</td>
+                    </tr>
+                    <tr>
+                        <td>Bloodied</td>
+                        <td>&le; 50%</td>
+                    </tr>
+                    <tr>
+                        <td>Severely Injured</td>
+                        <td>&le; 25%</td>
+                    </tr>
+                    <tr>
+                        <td>Critically Injured</td>
+                        <td>&le; 10%</td>
+                    </tr>
+                    <tr>
+                        <td>Unconscious</td>
+                        <td>&le; 0%</td>
+                    </tr>
+                    <tr>
+                        <td>Dead</td>
+                        <td>&le; -100%</td>
+                    </tr>
+                </tbody>
+            </table>
+        </section>
         </main>
     </body>
     <script src="main.js"></script>

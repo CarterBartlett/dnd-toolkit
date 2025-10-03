@@ -184,3 +184,43 @@ function toModifier(stat) {
     let modifier = Math.floor((stat - 10) / 2);
     return (modifier >= 0 ? "+" : "") + modifier;
 }
+
+document.addEventListener('DOMContentLoaded', recalculateCondition);
+document.getElementById('current-hp').addEventListener('input', recalculateCondition);
+document.getElementById('max-hp').addEventListener('input', recalculateCondition);
+
+function recalculateCondition() {
+    const currentHP = parseInt(document.getElementById('current-hp').value) || 0;
+    const maxHP = parseInt(document.getElementById('max-hp').value) || 0;
+    const percentHP = maxHP > 0 ? Math.floor((currentHP / maxHP) * 100) : 0;
+
+    document.getElementById('percent-hp').innerText = percentHP;
+
+    condition = ""
+
+    if (maxHP!==0) {
+        let condition = "Healthy";
+        if (percentHP < 100) {
+            condition = "Minor Injuries";
+        }
+        if (percentHP <= 75) {
+            condition = "Injured";
+        }
+        if (percentHP <= 50) {
+            condition = "Bloodied";
+        }
+        if (percentHP <= 25) {
+            condition = "Severely Injured";
+        }
+        if (percentHP <= 10) {
+            condition = "Critically Injured";
+        }
+        if (percentHP <= 0) {
+            condition = "Unconscious";
+        }
+        if (currentHP <= -maxHP) {
+            condition = "Dead";
+        }
+    }
+    document.getElementById('character-condition').innerText = condition;
+}
