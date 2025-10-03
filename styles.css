@@ -15,8 +15,8 @@ main {
 }
 
 main > * {
-    flex: 1 1 25%;
-    max-width: 25%;
+    flex: 1 1 0;
+    max-width: 33.33%;
 }
 
 div.stats {
