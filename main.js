@@ -108,24 +108,35 @@ document.getElementById('add-counter').addEventListener('click', function() {
     counterDiv.innerHTML = `
         <div style="background-color: #d9d9d9; display: flex; flex-direction: column;margin:2px;width:100px;">
             <input type="text" class="counter-name" placeholder="Name" style="margin:2px;" />
-            <div class="counter-value" style="color:black;align-self:center;font-size:40px;">0</div>
+            <input type="text" class="counter-value" style="color:black;align-self:center;font-size:40px;width:90%;text-align:center;" value="0" />
             <div style="display: flex;">
-                <button class="decrement-counter" style="width:100%">-</button>
-                <button class="increment-counter" style="width:100%">+</button>
+                <button class="decrement-counter" style="width:100%;background-color:orange;color:white;">-</button>
+                <button class="increment-counter" style="width:100%;background-color:green;color:white;">+</button>
             </div>
-            <button class="remove-counter">Remove</button>
+            <button class="remove-counter" style="background-color:red;color:white;">Remove</button>
         </div>
     `;
     container.appendChild(counterDiv);
+    
+    counterDiv.querySelector('.counter-value').addEventListener('change', function() {
+        let value = parseInt(this.value);
+        let autoremove = document.getElementById('remove-counter-on-expire').checked;
+
+        if (value < 0 && autoremove) {
+            container.removeChild(counterDiv);
+        }
+    });
 
     counterDiv.querySelector('.increment-counter').addEventListener('click', function() {
         const counterValue = counterDiv.querySelector('.counter-value');
-        counterValue.innerText = parseInt(counterValue.innerText) + 1;
+        counterValue.value = parseInt(counterValue.value) + 1;
+        counterValue.dispatchEvent(new Event('change'));
     });
 
     counterDiv.querySelector('.decrement-counter').addEventListener('click', function() {
         const counterValue = counterDiv.querySelector('.counter-value');
-        counterValue.innerText = Math.max(0, parseInt(counterValue.innerText) - 1);
+        counterValue.value = parseInt(counterValue.value) - 1;
+        counterValue.dispatchEvent(new Event('change'));
     });
 
     counterDiv.querySelector('.remove-counter').addEventListener('click', function() {
@@ -135,17 +146,20 @@ document.getElementById('add-counter').addEventListener('click', function() {
 
 document.getElementById('increment-all-counters').addEventListener('click', function() {
     document.querySelectorAll('.counter-value').forEach(function(counterValue) {
-        counterValue.innerText = parseInt(counterValue.innerText) + 1;
+        counterValue.value = parseInt(counterValue.value) + 1;
+        counterValue.dispatchEvent(new Event('change'));
     });
 });
 document.getElementById('decrement-all-counters').addEventListener('click', function() {
     document.querySelectorAll('.counter-value').forEach(function(counterValue) {
-        counterValue.innerText = Math.max(0, parseInt(counterValue.innerText) - 1);
+        counterValue.value = parseInt(counterValue.value) - 1;
+        counterValue.dispatchEvent(new Event('change'));
     });
 });
 document.getElementById('reset-all-counters').addEventListener('click', function() {
     document.querySelectorAll('.counter-value').forEach(function(counterValue) {
-        counterValue.innerText = 0;
+        counterValue.value = 0;
+        counterValue.dispatchEvent(new Event('change'));
     });
 });
 

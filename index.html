@@ -125,11 +125,19 @@
         </section>
         <section style="max-width:600px;">
             <h2>Counters</h2>
-            <button id="add-counter">Add Counter</button>
-            <button id="increment-all-counters">Increment All Counters</button>
-            <button id="decrement-all-counters">Decrement All Counters</button>
-            <button id="reset-all-counters">Reset All Counters</button>
-            <button id="remove-all-counters">Remove All Counters</button>
+            <div>
+                <button id="add-counter" style="background-color:green;color:white;">Add Counter</button>
+                <button id="remove-all-counters" style="background-color:red;color:white;">Remove All Counters</button>
+                <button id="reset-all-counters" style="background-color:red;color:white;">Reset All</button>
+                <button id="decrement-all-counters" style="background-color:orange;color:white;">-1</button>
+                <button id="increment-all-counters" style="background-color:green;color:white;">+1</button>
+            </div>
+            <div>
+                <label>
+                    <input type="checkbox" id="remove-counter-on-expire">
+                    Remove counter when effect expires?
+                </label>
+            </div>
             <div id="counters-container" style="display:flex; flex-wrap:wrap;"></div>
         </section>
         </main>
