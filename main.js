@@ -192,14 +192,14 @@ document.getElementById('max-hp').addEventListener('input', recalculateCondition
 function recalculateCondition() {
     const currentHP = parseInt(document.getElementById('current-hp').value) || 0;
     const maxHP = parseInt(document.getElementById('max-hp').value) || 0;
-    const percentHP = maxHP > 0 ? Math.floor((currentHP / maxHP) * 100) : 0;
+    const percentHP = maxHP != 0 ? (currentHP / maxHP) * 100 : 0;
 
-    document.getElementById('percent-hp').innerText = percentHP;
+    document.getElementById('percent-hp').innerText = maxHP > 0 ? Math.floor(percentHP)==0 && percentHP>0 ? "<1" :Math.floor(percentHP) : "N/A";
 
-    condition = ""
+    let condition = ""
 
-    if (maxHP!==0) {
-        let condition = "Healthy";
+    if (maxHP!=0) {
+        condition = "Healthy";
         if (percentHP < 100) {
             condition = "Minor Injuries";
         }
