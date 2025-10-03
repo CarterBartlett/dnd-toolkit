@@ -101,6 +101,58 @@ document.getElementById('remove-stat-allocations').addEventListener('click', fun
     });
 });
 
+document.getElementById('add-counter').addEventListener('click', function() {
+    const container = document.getElementById('counters-container');
+    const counterDiv = document.createElement('div');
+    counterDiv.className = 'counter';
+    counterDiv.innerHTML = `
+        <div style="background-color: #d9d9d9; display: flex; flex-direction: column;margin:2px;width:100px;">
+            <input type="text" class="counter-name" placeholder="Name" style="margin:2px;" />
+            <div class="counter-value" style="color:black;align-self:center;font-size:40px;">0</div>
+            <div style="display: flex;">
+                <button class="decrement-counter" style="width:100%">-</button>
+                <button class="increment-counter" style="width:100%">+</button>
+            </div>
+            <button class="remove-counter">Remove</button>
+        </div>
+    `;
+    container.appendChild(counterDiv);
+
+    counterDiv.querySelector('.increment-counter').addEventListener('click', function() {
+        const counterValue = counterDiv.querySelector('.counter-value');
+        counterValue.innerText = parseInt(counterValue.innerText) + 1;
+    });
+
+    counterDiv.querySelector('.decrement-counter').addEventListener('click', function() {
+        const counterValue = counterDiv.querySelector('.counter-value');
+        counterValue.innerText = Math.max(0, parseInt(counterValue.innerText) - 1);
+    });
+
+    counterDiv.querySelector('.remove-counter').addEventListener('click', function() {
+        container.removeChild(counterDiv);
+    });
+});
+
+document.getElementById('increment-all-counters').addEventListener('click', function() {
+    document.querySelectorAll('.counter-value').forEach(function(counterValue) {
+        counterValue.innerText = parseInt(counterValue.innerText) + 1;
+    });
+});
+document.getElementById('decrement-all-counters').addEventListener('click', function() {
+    document.querySelectorAll('.counter-value').forEach(function(counterValue) {
+        counterValue.innerText = Math.max(0, parseInt(counterValue.innerText) - 1);
+    });
+});
+document.getElementById('reset-all-counters').addEventListener('click', function() {
+    document.querySelectorAll('.counter-value').forEach(function(counterValue) {
+        counterValue.innerText = 0;
+    });
+});
+
+document.getElementById('remove-all-counters').addEventListener('click', function() {
+    document.getElementById('counters-container').innerHTML = '';
+});
+
 function onStatChange(){
     const usedOptions = Array.from(document.querySelectorAll('.stat-select')).map(function(dropdown) {
         return dropdown.value;
