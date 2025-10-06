@@ -223,4 +223,13 @@ function recalculateCondition() {
         }
     }
     document.getElementById('character-condition').innerText = condition;
+
+
+    document.querySelector('#condition-healthy .hp-range').innerText = maxHP;
+    document.querySelector('#condition-minorinjuries .hp-range').innerText = Math.ceil(maxHP * 0.75);
+    document.querySelector('#condition-bloodied .hp-range').innerText = Math.ceil(maxHP * 0.5);
+    document.querySelector('#condition-severelyinjured .hp-range').innerText = Math.ceil(maxHP * 0.25);
+    document.querySelector('#condition-criticallyinjured .hp-range').innerText = Math.ceil(maxHP * 0.1);
+    document.querySelector('#condition-unconscious .hp-range').innerText = 0;
+    document.querySelector('#condition-dead .hp-range').innerText = -maxHP;
 }
