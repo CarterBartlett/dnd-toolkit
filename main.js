@@ -1,3 +1,22 @@
+document.addEventListener('DOMContentLoaded', function() {
+    const state = JSON.parse(localStorage.getItem('application-state')) || {};
+    
+    // Load initial state
+    document.getElementById('guarantee-16').checked = state['guarantee-16'] || false;
+    document.getElementById('current-hp').value = state['current-hp'] || '';
+    document.getElementById('max-hp').value = state['max-hp'] || '';
+
+    // Add state update listeners
+    document.getElementById('guarantee-16').addEventListener('change', () => updateState('guarantee-16', document.getElementById('guarantee-16').checked));
+    document.getElementById('current-hp').addEventListener('input', () => updateState('current-hp', document.getElementById('current-hp').value));
+    document.getElementById('max-hp').addEventListener('input', () => updateState('max-hp', document.getElementById('max-hp').value));
+
+    function updateState(key, value) {
+        state[key] = value;
+        localStorage.setItem('application-state', JSON.stringify(state));
+    }
+});
+
 document.getElementById('minimum-stat-threshold').onchange = function() {
     let value = parseInt(this.value);
     if (value > 90) {
@@ -46,7 +65,7 @@ document.getElementById('roll-button').addEventListener('click', function() {
                     break;
                 }
             }
-            
+
             statSets[i]['rolls'].sort((a, b) => b - a);
             statSets[i]['modifier'] = toModifier(statSets[i]['total']);
         }
@@ -117,7 +136,7 @@ document.getElementById('add-counter').addEventListener('click', function() {
         </div>
     `;
     container.appendChild(counterDiv);
-    
+
     counterDiv.querySelector('.counter-value').addEventListener('change', function() {
         let value = parseInt(this.value);
         let autoremove = document.getElementById('remove-counter-on-expire').checked;
