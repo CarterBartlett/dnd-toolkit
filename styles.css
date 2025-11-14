@@ -64,6 +64,10 @@ section {
     margin: 20px;
 }
 
+#character-condition {
+    font-weight: bold;
+}
+
 /* Mobile-friendly responsive design */
 @media (max-width: 768px) {
     body {

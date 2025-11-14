@@ -1,20 +1,23 @@
 document.addEventListener('DOMContentLoaded', function() {
     const state = JSON.parse(localStorage.getItem('application-state')) || {};
-    
+
     // Load initial state
     document.getElementById('guarantee-16').checked = state['guarantee-16'] || false;
     document.getElementById('current-hp').value = state['current-hp'] || '';
     document.getElementById('max-hp').value = state['max-hp'] || '';
 
-    // Add state update listeners
+    // Add event listeners
     document.getElementById('guarantee-16').addEventListener('change', () => updateState('guarantee-16', document.getElementById('guarantee-16').checked));
     document.getElementById('current-hp').addEventListener('input', () => updateState('current-hp', document.getElementById('current-hp').value));
     document.getElementById('max-hp').addEventListener('input', () => updateState('max-hp', document.getElementById('max-hp').value));
+    document.getElementById('current-hp').addEventListener('input', recalculateCondition);
+    document.getElementById('max-hp').addEventListener('input', recalculateCondition);
 
     function updateState(key, value) {
         state[key] = value;
         localStorage.setItem('application-state', JSON.stringify(state));
     }
+    recalculateCondition();
 });
 
 document.getElementById('minimum-stat-threshold').onchange = function() {
@@ -204,10 +207,6 @@ function toModifier(stat) {
     return (modifier >= 0 ? "+" : "") + modifier;
 }
 
-document.addEventListener('DOMContentLoaded', recalculateCondition);
-document.getElementById('current-hp').addEventListener('input', recalculateCondition);
-document.getElementById('max-hp').addEventListener('input', recalculateCondition);
-
 function recalculateCondition() {
     const currentHP = parseInt(document.getElementById('current-hp').value) || 0;
     const maxHP = parseInt(document.getElementById('max-hp').value) || 0;
@@ -216,34 +215,57 @@ function recalculateCondition() {
     document.getElementById('percent-hp').innerText = maxHP > 0 ? Math.floor(percentHP)==0 && percentHP>0 ? "<1" :Math.floor(percentHP) : "N/A";
 
     let condition = ""
+    let conditionColour, conditionOutline;
 
     if (maxHP!=0) {
+
         condition = "Healthy";
+        conditionColour = "#5cb85c";
+        conditionOutline = "black";
+
         if (percentHP < 100) {
             condition = "Minor Injuries";
+            conditionColour = "#9acd32";
+            conditionOutline = "black";
         }
         if (percentHP <= 75) {
             condition = "Injured";
+            conditionColour = "#ffc107";
+            conditionOutline = "black";
         }
         if (percentHP <= 50) {
             condition = "Bloodied";
+            conditionColour = "#ff8c00";
+            conditionOutline = "black";
         }
         if (percentHP <= 25) {
             condition = "Severely Injured";
+            conditionColour = "#e5533c";
+            conditionOutline = "black";
         }
         if (percentHP <= 10) {
             condition = "Critically Injured";
+            conditionColour = "#dc3545";
+            conditionOutline = "black";
         }
         if (percentHP <= 0) {
             condition = "Unconscious";
+            conditionColour = "#636363ff";
+            conditionOutline = "white";
         }
         if (currentHP <= -maxHP) {
             condition = "Dead";
+            conditionColour = "#000000";
+            conditionOutline = "white";
         }
     }
+    
+    // Set condition display
     document.getElementById('character-condition').innerText = condition;
+    document.getElementById('character-condition').style.color = conditionColour;
+    document.getElementById('character-condition').style.textShadow = `-1px -1px 0 ${conditionOutline}, 1px -1px 0 ${conditionOutline}, -1px 1px 0 ${conditionOutline}, 1px 1px 0 ${conditionOutline}`;
 
-
+    // Update HP ranges in condition table
     document.querySelector('#condition-healthy .hp-range').innerText = maxHP;
     document.querySelector('#condition-minorinjuries .hp-range').innerText = Math.ceil(maxHP * 0.75);
     document.querySelector('#condition-bloodied .hp-range').innerText = Math.ceil(maxHP * 0.5);
