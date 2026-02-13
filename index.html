@@ -17,7 +17,67 @@
             <h1>D&D Toolkit</h1>
         </header>
         <main>
-        <section>
+        <div class="mobile-tabs" role="tablist" aria-label="Mobile Tabs">
+            <button class="mobile-tab" data-target="condition-section" aria-controls="condition-section">Character Condition</button>
+            <button class="mobile-tab" data-target="stat-section" aria-controls="stat-section">Stat Roller</button>
+            <button class="mobile-tab" data-target="counters-section" aria-controls="counters-section">Synced Counters</button>
+        </div>
+        <section id="condition-section" class="tab-content">
+            <h2>Character Condition</h2>
+            <p>Current HP / Max HP</p>
+            <input type="text" id="current-hp" value="0" style="font-size:30px;width:60px;"> <span style="font-size:30px">/</span>
+            <input type="text" id="max-hp" value="0" style="font-size:30px;width:60px;">
+            <p>% of HP: <span id="percent-hp">0</span>%</p>
+            <p>Condition: <span id="character-condition">N/A</span></p>
+            <table style="width:100%;max-width:400px;">
+                <thead style="background-color:darkslateblue;color:white;">
+                    <tr>
+                        <th>Condition</th>
+                        <th>%</th>
+                        <th>HP</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr id="condition-healthy">
+                        <td>Healthy</td>
+                        <td>100%</td>
+                        <td class="hp-range">-</td>
+                    </tr>
+                    <tr id="condition-minorinjuries">
+                        <td>Minor Injuries</td>
+                        <td>&le; 75%</td>
+                        <td class="hp-range">-</td>
+                    </tr>
+                    <tr id="condition-bloodied">
+                        <td>Bloodied</td>
+                        <td>&le; 50%</td>
+                        <td class="hp-range">-</td>
+                    </tr>
+                    <tr id="condition-severelyinjured">
+                        <td>Severely Injured</td>
+                        <td>&le; 25%</td>
+                        <td class="hp-range">-</td>
+                    </tr>
+                    <tr id="condition-criticallyinjured">
+                        <td>Critically Injured</td>
+                        <td>&le; 10%</td>
+                        <td class="hp-range">-</td>
+                    </tr>
+                    <tr id="condition-unconscious">
+                        <td>Unconscious</td>
+                        <td>&le; 0%</td>
+                        <td class="hp-range">-</td>
+                    </tr>
+                    <tr id="condition-dead">
+                        <td>Dead</td>
+                        <td>&le; -100%</td>
+                        <td class="hp-range">-</td>
+                    </tr>
+                </tbody>
+            </table>
+        </section>
+
+        <section id="stat-section" class="tab-content">
             <h2>Stat Roller</h2>
             <div id="stat-roller">
                 <div class="stats">
@@ -129,7 +189,7 @@
                 <div id="result"></div>
             </div>
         </section>
-        <section style="max-width:600px;">
+        <section id="counters-section" class="tab-content" style="max-width:600px;">
             <h2>Synced Counters</h2>
             <div>
                 <button id="add-counter" style="background-color:green;color:white;">Add Counter</button>
@@ -146,60 +206,7 @@
             </div>
             <div id="counters-container" style="display:flex; flex-wrap:wrap;"></div>
         </section>
-        <section>
-            <h2>Character Condition</h2>
-            <p>Current HP / Max HP</p>
-            <input type="text" id="current-hp" value="0" style="font-size:30px;width:60px;"> <span style="font-size:30px">/</span>
-            <input type="text" id="max-hp" value="0" style="font-size:30px;width:60px;">
-            <p>% of HP: <span id="percent-hp">0</span>%</p>
-            <p>Condition: <span id="character-condition">N/A</span></p>
-            <table style="width:100%;max-width:400px;">
-                <thead style="background-color:darkslateblue;color:white;">
-                    <tr>
-                        <th>Condition</th>
-                        <th>%</th>
-                        <th>HP</th>
-                    </tr>
-                </thead>
-                <tbody>
-                    <tr id="condition-healthy">
-                        <td>Healthy</td>
-                        <td>100%</td>
-                        <td class="hp-range">-</td>
-                    </tr>
-                    <tr id="condition-minorinjuries">
-                        <td>Minor Injuries</td>
-                        <td>&le; 75%</td>
-                        <td class="hp-range">-</td>
-                    </tr>
-                    <tr id="condition-bloodied">
-                        <td>Bloodied</td>
-                        <td>&le; 50%</td>
-                        <td class="hp-range">-</td>
-                    </tr>
-                    <tr id="condition-severelyinjured">
-                        <td>Severely Injured</td>
-                        <td>&le; 25%</td>
-                        <td class="hp-range">-</td>
-                    </tr>
-                    <tr id="condition-criticallyinjured">
-                        <td>Critically Injured</td>
-                        <td>&le; 10%</td>
-                        <td class="hp-range">-</td>
-                    </tr>
-                    <tr id="condition-unconscious">
-                        <td>Unconscious</td>
-                        <td>&le; 0%</td>
-                        <td class="hp-range">-</td>
-                    </tr>
-                    <tr id="condition-dead">
-                        <td>Dead</td>
-                        <td>&le; -100%</td>
-                        <td class="hp-range">-</td>
-                    </tr>
-                </tbody>
-            </table>
-        </section>
+        
         </main>
     </body>
     <script src="main.js"></script>

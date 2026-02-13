@@ -274,3 +274,40 @@ function recalculateCondition() {
     document.querySelector('#condition-unconscious .hp-range').innerText = 0;
     document.querySelector('#condition-dead .hp-range').innerText = -maxHP;
 }
+
+// Mobile tab behavior: show a single section on small screens, default to Character Condition
+document.addEventListener('DOMContentLoaded', function() {
+    const tabs = Array.from(document.querySelectorAll('.mobile-tab'));
+    const tabContents = Array.from(document.querySelectorAll('.tab-content'));
+    if (!tabs.length || !tabContents.length) return;
+
+    function showTab(id) {
+        tabContents.forEach(c => c.classList.toggle('active', c.id === id));
+        tabs.forEach(b => b.classList.toggle('active', b.dataset.target === id));
+        try { localStorage.setItem('mobile-tab', id); } catch (e) {}
+    }
+
+    tabs.forEach(btn => btn.addEventListener('click', function() {
+        showTab(this.dataset.target);
+    }));
+
+    // Initialize: prefer saved tab, default to condition-section
+    const saved = localStorage.getItem('mobile-tab') || 'condition-section';
+    if (window.matchMedia('(max-width: 768px)').matches) {
+        showTab(saved);
+    } else {
+        tabContents.forEach(c => c.classList.add('active'));
+        tabs.forEach(b => b.classList.remove('active'));
+    }
+
+    // On resize, re-evaluate whether to show single tab or all
+    window.addEventListener('resize', function() {
+        if (window.matchMedia('(max-width: 768px)').matches) {
+            const current = localStorage.getItem('mobile-tab') || 'condition-section';
+            showTab(current);
+        } else {
+            tabContents.forEach(c => c.classList.add('active'));
+            tabs.forEach(b => b.classList.remove('active'));
+        }
+    });
+});

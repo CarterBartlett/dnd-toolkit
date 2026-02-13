@@ -198,3 +198,42 @@ section {
         margin: 5px;
     }
 }
+
+/* Mobile tab bar and tabbed content */
+.mobile-tabs {
+    display: none;
+    gap: 8px;
+    justify-content: center;
+    align-items: center;
+    margin: 10px 0;
+}
+.mobile-tab {
+    padding: 8px 12px;
+    border-radius: 20px;
+    border: none;
+    background: rgba(0,0,0,0.2);
+    color: #fff;
+    font-weight: 600;
+    cursor: pointer;
+}
+.mobile-tab.active {
+    background: #007bff;
+}
+
+.tab-content {
+    /* default: visible on desktop due to later overrides; mobile rules below hide/show */
+}
+
+@media (max-width: 768px) {
+    .mobile-tabs {
+        display: flex;
+    }
+
+    .tab-content {
+        display: none;
+    }
+
+    .tab-content.active {
+        display: block;
+    }
+}
