@@ -11,6 +11,16 @@ function switchSection(section) {
             el.style.display = sec === section ? 'block' : 'none';
         }
     });
+    // Highlight the header button for the open section.
+    document.querySelectorAll('#header-buttons button[data-section]').forEach(button => {
+        const isActive = button.dataset.section === section;
+        button.classList.toggle('active', isActive);
+        if (isActive) {
+            button.setAttribute('aria-current', 'page');
+        } else {
+            button.removeAttribute('aria-current');
+        }
+    });
     CURRENT_SECTION = section;
 }
 
