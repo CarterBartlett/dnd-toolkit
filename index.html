@@ -11,203 +11,195 @@
         <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png" />
         <meta name="apple-mobile-web-app-title" content="MyWebSite" />
         <link rel="manifest" href="/site.webmanifest" />
+        <link rel="stylesheet" href="/fanta.css" />
+        <script src="main.js"></script>
     </head>
     <body>
-        <header>
-            <h1>D&D Toolkit</h1>
-        </header>
-        <main>
-        <div class="mobile-tabs" role="tablist" aria-label="Mobile Tabs">
-            <button class="mobile-tab" data-target="condition-section" aria-controls="condition-section">Character Condition</button>
-            <button class="mobile-tab" data-target="stat-section" aria-controls="stat-section">Stat Roller</button>
-            <button class="mobile-tab" data-target="counters-section" aria-controls="counters-section">Synced Counters</button>
-        </div>
-        <section id="condition-section" class="tab-content">
-            <h2>Character Condition</h2>
-            <p>Current HP / Max HP</p>
-            <input type="text" id="current-hp" value="0" style="font-size:30px;width:60px;"> <span style="font-size:30px">/</span>
-            <input type="text" id="max-hp" value="0" style="font-size:30px;width:60px;">
-            <p>% of HP: <span id="percent-hp">0</span>%</p>
-            <p>Condition: <span id="character-condition">N/A</span></p>
-            <table style="width:100%;max-width:400px;">
-                <thead style="background-color:darkslateblue;color:white;">
-                    <tr>
-                        <th>Condition</th>
-                        <th>%</th>
-                        <th>HP</th>
-                    </tr>
-                </thead>
-                <tbody>
-                    <tr id="condition-healthy">
-                        <td>Healthy</td>
-                        <td>100%</td>
-                        <td class="hp-range">-</td>
-                    </tr>
-                    <tr id="condition-minorinjuries">
-                        <td>Minor Injuries</td>
-                        <td>&le; 75%</td>
-                        <td class="hp-range">-</td>
-                    </tr>
-                    <tr id="condition-bloodied">
-                        <td>Bloodied</td>
-                        <td>&le; 50%</td>
-                        <td class="hp-range">-</td>
-                    </tr>
-                    <tr id="condition-severelyinjured">
-                        <td>Severely Injured</td>
-                        <td>&le; 25%</td>
-                        <td class="hp-range">-</td>
-                    </tr>
-                    <tr id="condition-criticallyinjured">
-                        <td>Critically Injured</td>
-                        <td>&le; 10%</td>
-                        <td class="hp-range">-</td>
-                    </tr>
-                    <tr id="condition-unconscious">
-                        <td>Unconscious</td>
-                        <td>&le; 0%</td>
-                        <td class="hp-range">-</td>
-                    </tr>
-                    <tr id="condition-dead">
-                        <td>Dead</td>
-                        <td>&le; -100%</td>
-                        <td class="hp-range">-</td>
-                    </tr>
-                </tbody>
-            </table>
-        </section>
 
-        <section id="stat-section" class="tab-content">
-            <h2>Stat Roller</h2>
-            <div id="stat-roller">
-                <div class="stats">
-                    <div class="stat" id="stat-1">
-                        <p class="modifier">+0</p>
-                        <h1>0</h1>
-                        <p class="rolls">0,0,0,0</p>
-                        <select class="stat-select">
-                            <option value="">--</option>
-                            <option value="str">STR</option>
-                            <option value="dex">DEX</option>
-                            <option value="con">CON</option>
-                            <option value="int">INT</option>
-                            <option value="wis">WIS</option>
-                            <option value="cha">CHA</option>
-                        </select>
-                    </div>
-                    <div class="stat" id="stat-2">
-                        <p class="modifier">+0</p>
-                        <h1>0</h1>
-                        <p class="rolls">0,0,0,0</p>
-                        <select class="stat-select">
-                            <option value="">--</option>
-                            <option value="str">STR</option>
-                            <option value="dex">DEX</option>
-                            <option value="con">CON</option>
-                            <option value="int">INT</option>
-                            <option value="wis">WIS</option>
-                            <option value="cha">CHA</option>
-                        </select>
-                    </div>
-                    <div class="stat" id="stat-3">
-                        <p class="modifier">+0</p>
-                        <h1>0</h1>
-                        <p class="rolls">0,0,0,0</p>
-                        <select class="stat-select">
-                            <option value="">--</option>
-                            <option value="str">STR</option>
-                            <option value="dex">DEX</option>
-                            <option value="con">CON</option>
-                            <option value="int">INT</option>
-                            <option value="wis">WIS</option>
-                            <option value="cha">CHA</option>
-                        </select>
-                    </div>
-                    <div class="stat" id="stat-4">
-                        <p class="modifier">+0</p>
-                        <h1>0</h1>
-                        <p class="rolls">0,0,0,0</p>
-                        <select class="stat-select">
-                            <option value="">--</option>
-                            <option value="str">STR</option>
-                            <option value="dex">DEX</option>
-                            <option value="con">CON</option>
-                            <option value="int">INT</option>
-                            <option value="wis">WIS</option>
-                            <option value="cha">CHA</option>
-                        </select>
-                    </div>
-                    <div class="stat" id="stat-5">
-                        <p class="modifier">+0</p>
-                        <h1>0</h1>
-                        <p class="rolls">0,0,0,0</p>
-                        <select class="stat-select">
-                            <option value="">--</option>
-                            <option value="str">STR</option>
-                            <option value="dex">DEX</option>
-                            <option value="con">CON</option>
-                            <option value="int">INT</option>
-                            <option value="wis">WIS</option>
-                            <option value="cha">CHA</option>
-                        </select>
-                    </div>
-                    <div class="stat" id="stat-6">
-                        <p class="modifier">+0</p>
-                        <h1>0</h1>
-                        <p class="rolls">0,0,0,0</p>
-                        <select class="stat-select">
-                            <option value="">--</option>
-                            <option value="str">STR</option>
-                            <option value="dex">DEX</option>
-                            <option value="con">CON</option>
-                            <option value="int">INT</option>
-                            <option value="wis">WIS</option>
-                            <option value="cha">CHA</option>
-                        </select>
-                    </div>
-                </div>
-                <div class="stat-totals">
-                    <p>Stat total: <span id="stat-total"></span></p>
-                    <p>Lowest stat: <span id="stat-lowest"></span></p>
-                    <p>Highest stat: <span id="stat-highest"></span></p>
-                    <p>Average stat: <span id="stat-average"></span></p>
-                    <p>Luck factor: <span id="stat-luck-factor"></span></p>
-                </div>
-                <button id="remove-stat-allocations">Remove Stat Allocations</button>
-                <div>
-                    <label>Rolling Method:</label>
-                    <input type="radio" id="method-standard" name="rolling-method" value="standard" checked>
-                    <label for="method-standard">Standard (4d6 drop lowest)</label>
-                    <input type="radio" id="method-classic" name="rolling-method" value="classic">
-                    <label for="method-classic">Classic (3d6)</label>
-                </div>
-                <label for="minimum-stat-threshold">Minimum Stat Threshold:</label>
-                <input type="number" id="minimum-stat-threshold" value="75" /><br/>
-                <label for="guarantee-16">Guarantee at least one 16 or higher?</label>
-                <input type="checkbox" id="guarantee-16" />
-                <button id="roll-button">Roll Stats</button>
-                <div id="result"></div>
+        <header>
+            <h1>Carter's D&D Toolkit</h1>
+            <div id="header-buttons">
+                <button id="header-button-condition" onclick="switchSection('condition')">Character Condition</button>
+                <button id="header-button-stat" onclick="switchSection('stat')">Stat Roller</button>
+                <button id="header-button-counter" onclick="switchSection('counters')">Synced Counters</button>
             </div>
-        </section>
-        <section id="counters-section" class="tab-content" style="max-width:600px;">
-            <h2>Synced Counters</h2>
-            <div>
-                <button id="add-counter" style="background-color:green;color:white;">Add Counter</button>
-                <button id="remove-all-counters" style="background-color:red;color:white;">Remove All Counters</button>
-                <button id="reset-all-counters" style="background-color:red;color:white;">Reset All</button>
-                <button id="decrement-all-counters" style="background-color:orange;color:white;">-1</button>
-                <button id="increment-all-counters" style="background-color:green;color:white;">+1</button>
-            </div>
-            <div>
-                <label>
+        </header>
+
+        <main>
+            <!-- Character Condition Section -->
+            <section id="condition-section" class="tab-content" style="display:none;">
+                <button id="add-character" onclick="addCharacter()">Add Character</button>
+                <table style="width: 100%;" class="condition-table">
+                    <colgroup>
+                        <col style="width: 5%;">
+                        <col style="width: 25%;">
+                        <col style="width: 15%;">
+                        <col style="width: 10%;">
+                        <col style="width: 40%;">
+                    </colgroup>
+                    <thead>
+                        <tr>
+                            <th></th>
+                            <th>Character</th>
+                            <th>Current HP</th>
+                            <th>Max HP</th>
+                            <th>Condition</th>
+                        </tr>
+                    </thead>
+                    <tbody id="character-rows">
+                    </tbody>
+                    <tbody>
+                    </tbody>
+                </table>
+
+                <!-- Blank row cloned by addCharacter() -->
+                <template id="character-row-template">
+                    <tr>
+                        <td><button type="button" class="row-button remove-character" title="Remove character" aria-label="Remove character">✕</button></td>
+                        <td><input class="character-name" type="text"></td>
+                        <td>
+                            <div class="hp-cell">
+                                <input class="current-hp" type="number">
+                                <button type="button" class="row-button reset-hp"title="Reset to max HP" aria-label="Reset to max HP">↺</button>
+                            </div>
+                        </td>
+                        <td><input class="max-hp" type="number" min="0"></td>
+                        <td>
+                            <span class="condition-label"></span>
+                            <meter class="condition-meter" value="0" min="0" max="100" style="width: 100%;"></meter>
+                        </td>
+                    </tr>
+                </template>
+            </section>
+
+            <!-- Stat Roller Section -->
+            <section id="stat-section" class="tab-content" style="display:none">
+                <div id="stat-roller">
+                    <!-- Stat boxes are built from #stat-template by renderStats() in main.js -->
+                    <div class="stats" id="stats"></div>
+
+                    <template id="stat-template">
+                        <div class="stat">
+                            <p class="modifier"></p>
+                            <h1 class="stat-value"></h1>
+                            <p class="rolls"></p>
+                            <select class="stat-select" aria-label="Assign ability">
+                                <option value="">--</option>
+                                <option value="str">STR</option>
+                                <option value="dex">DEX</option>
+                                <option value="con">CON</option>
+                                <option value="int">INT</option>
+                                <option value="wis">WIS</option>
+                                <option value="cha">CHA</option>
+                            </select>
+                        </div>
+                    </template>
+
+                    <button id="roll-button">Roll Stats</button>
+                    <button id="remove-stat-allocations">Remove Stat Allocations</button>
+
+                    <div class="card stat-panel">
+                        <div class="stat-settings">
+                            <h2>Settings</h2>
+                            <div class="stat-setting">
+                                <label for="number-of-stats">Number of stats</label>
+                                <input type="number" id="number-of-stats" value="6" min="1" max="9">
+                            </div>
+                            <div class="stat-setting">
+                                <label for="rolling-method">Rolling method</label>
+                                <select id="rolling-method">
+                                    <option value="standard" selected>Standard (4d6 drop lowest)</option>
+                                    <option value="classic">Classic (3d6)</option>
+                                </select>
+                            </div>
+                            <div class="stat-setting">
+                                <label for="minimum-stat-threshold">Minimum stat total</label>
+                                <input type="number" id="minimum-stat-threshold" value="75" min="0" max="90" title="Reroll until the stats add up to at least this (rescales when Number of stats changes)">
+                            </div>
+                            <div class="stat-setting">
+                                <input type="checkbox" id="guarantee-16">
+                                <label for="guarantee-16">Guarantee at least one 16 or higher</label>
+                            </div>
+                        </div>
+
+                        <div class="stat-breakdown">
+                        <table>
+                            <thead>
+                                <tr>
+                                    <th colspan="2">Stats</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td>Total</td>
+                                    <td id="stat-total">–</td>
+                                </tr>
+                                <tr>
+                                    <td>Lowest</td>
+                                    <td id="stat-lowest">–</td>
+                                </tr>
+                                <tr>
+                                    <td>Highest</td>
+                                    <td id="stat-highest">–</td>
+                                </tr>
+                                <tr>
+                                    <td>Average</td>
+                                    <td id="stat-average">–</td>
+                                </tr>
+                                <tr>
+                                    <td>Luck Factor</td>
+                                    <td id="stat-luck-factor">–</td>
+                                </tr>
+                            </tbody>
+                        </table>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Synced Counters Section -->
+            <section id="counters-section" class="tab-content" style="display:none">
+                <h2>Synced Counters</h2>
+                <div class="counter-toolbar">
+                    <div class="button-group">
+                        <button id="add-counter">Add Counter</button>
+                        <button id="decrement-all-counters" title="Decrease every linked counter by 1">-1 Linked</button>
+                        <button id="increment-all-counters" title="Increase every linked counter by 1">+1 Linked</button>
+                    </div>
+                    <div class="button-group">
+                        <button id="reset-linked-counters" title="Reset every linked counter to its starting value">Reset Linked</button>
+                        <button id="reset-all-counters" title="Reset every counter to its starting value">Reset All</button>
+                        <button id="remove-all-counters" class="button-danger">Remove All</button>
+                    </div>
+                </div>
+                <div class="counter-option">
                     <input type="checkbox" id="remove-counter-on-expire">
-                    Remove counter when effect expires?
-                </label>
-            </div>
-            <div id="counters-container" style="display:flex; flex-wrap:wrap;"></div>
-        </section>
-        
+                    <label for="remove-counter-on-expire">Remove counter when effect expires</label>
+                </div>
+                <div id="counters-container" style="display:flex; flex-wrap:wrap;"></div>
+
+                <!-- One counter card, cloned by renderCounters() in main.js -->
+                <template id="counter-template">
+                    <div class="counter">
+                        <div class="counter-header">
+                            <button type="button" class="row-button toggle-link" aria-pressed="true" aria-label="Linked to -1/+1 Linked buttons" title="Linked: affected by -1/+1 Linked (click to unlink)">
+                                <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                                    <path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"/>
+                                    <path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"/>
+                                </svg>
+                            </button>
+                            <button type="button" class="row-button remove-counter" title="Remove counter" aria-label="Remove counter">✕</button>
+                        </div>
+                        <input type="text" class="counter-name" placeholder="Name" aria-label="Counter name">
+                        <input type="number" class="counter-value" aria-label="Counter value">
+                        <div class="counter-controls">
+                            <button type="button" class="decrement-counter" aria-label="Decrease by 1">-1</button>
+                            <button type="button" class="increment-counter" aria-label="Increase by 1">+1</button>
+                        </div>
+                    </div>
+                </template>
+            </section>
+
         </main>
     </body>
-    <script src="main.js"></script>
 </html>
