@@ -56,16 +56,17 @@
                 <!-- Blank row cloned by addCharacter() -->
                 <template id="character-row-template">
                     <tr>
-                        <td><button type="button" class="row-button remove-character" title="Remove character" aria-label="Remove character">✕</button></td>
-                        <td><input class="character-name" type="text"></td>
-                        <td>
+                        <td class="cell-remove"><button type="button" class="row-button remove-character" title="Remove character" aria-label="Remove character">✕</button></td>
+                        <td class="cell-name"><input class="character-name" type="text" placeholder="Name" aria-label="Character name"></td>
+                        <!-- data-label is shown as a heading on mobile, where the table header is hidden -->
+                        <td class="cell-current-hp" data-label="Current HP">
                             <div class="hp-cell">
-                                <input class="current-hp" type="number">
-                                <button type="button" class="row-button reset-hp"title="Reset to max HP" aria-label="Reset to max HP">↺</button>
+                                <input class="current-hp" type="number" aria-label="Current HP">
+                                <button type="button" class="row-button reset-hp" title="Reset to max HP" aria-label="Reset to max HP">↺</button>
                             </div>
                         </td>
-                        <td><input class="max-hp" type="number" min="0"></td>
-                        <td>
+                        <td class="cell-max-hp" data-label="Max HP"><input class="max-hp" type="number" min="0" aria-label="Max HP"></td>
+                        <td class="cell-condition">
                             <span class="condition-label"></span>
                             <meter class="condition-meter" value="0" min="0" max="100" style="width: 100%;"></meter>
                         </td>

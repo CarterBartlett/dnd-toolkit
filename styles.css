@@ -287,3 +287,134 @@ section {
 .stat-setting input[type="number"] {
     width: 5em;
 }
+
+/* ===================================================================
+   Mobile layout (phones and narrow windows)
+   =================================================================== */
+@media (max-width: 768px) {
+    /* --- Header: title on top, tabs share a full-width row underneath --- */
+    header {
+        flex-direction: column;
+        align-items: stretch;
+        gap: 12px;
+        padding: 16px 12px;
+    }
+
+    header h1 {
+        text-align: center;
+    }
+
+    header > #header-buttons {
+        gap: 6px;
+        padding: 6px;
+    }
+
+    #header-buttons button {
+        flex: 1 1 0;
+        padding: 0.4rem 0.25rem;
+        font-size: 0.9rem;
+        white-space: normal; /* let "Character Condition" wrap onto two lines */
+    }
+
+    /* --- Sections: drop the wide desktop side padding --- */
+    section {
+        padding: 12px;
+    }
+
+    /* 16px+ stops iOS Safari zooming in when an input is tapped */
+    input,
+    select {
+        font-size: 16px;
+    }
+
+    /* --- Character Condition: each table row becomes a card --- */
+    .condition-table,
+    .condition-table tbody {
+        display: block;
+    }
+
+    .condition-table colgroup,
+    .condition-table thead {
+        display: none;
+    }
+
+    #character-rows tr {
+        display: grid;
+        grid-template-columns: 1fr 1fr auto;
+        grid-template-areas:
+            "name      name      remove"
+            "current   max       max"
+            "condition condition condition";
+        gap: 8px 10px;
+        margin-top: 12px;
+        padding: 10px;
+        border-radius: 5px;
+        background-color: var(--background-secondary);
+        border: 3px solid var(--background-primary);
+    }
+
+    #character-rows td {
+        display: block;
+        padding: 0;
+        border: none;
+    }
+
+    #character-rows .cell-name      { grid-area: name; }
+    #character-rows .cell-remove    { grid-area: remove; }
+    #character-rows .cell-current-hp { grid-area: current; }
+    #character-rows .cell-max-hp    { grid-area: max; }
+    #character-rows .cell-condition { grid-area: condition; }
+
+    #character-rows .cell-name input,
+    #character-rows .cell-max-hp input {
+        width: 100%;
+    }
+
+    /* The table header is hidden, so label the HP fields inside the card */
+    #character-rows td[data-label]::before {
+        content: attr(data-label);
+        display: block;
+        font-size: 0.8rem;
+        opacity: 0.75;
+        margin-bottom: 2px;
+    }
+
+    #character-rows .remove-character {
+        height: 100%;
+    }
+
+    /* --- Stat Roller --- */
+    .stats .stat {
+        flex: 1 1 28%; /* three boxes per row */
+    }
+
+    .stat-panel {
+        gap: 1.25rem;
+        padding: 1rem;
+    }
+
+    .stat-settings,
+    .stat-breakdown {
+        flex-basis: 100%; /* stack Settings above the stats breakdown */
+    }
+
+    .stat-setting label {
+        white-space: normal; /* long labels (e.g. "Guarantee...") may wrap */
+    }
+
+    /* --- Synced Counters --- */
+    .counter-toolbar,
+    .button-group {
+        width: 100%;
+    }
+
+    .button-group button {
+        flex: 1 1 auto;
+    }
+
+    #counters-container .counter {
+        flex: 1 1 calc(50% - 8px); /* two counters per row */
+        width: auto;
+        min-width: 0;
+    }
+}
